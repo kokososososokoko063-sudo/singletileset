@@ -29,12 +29,10 @@
     var game = new Phaser.Game(config);
 
    function preload ()
-    {
-        // يجب أن يتطابق 'base_tile' مع اسم الصورة المستخدمة في ملف singletileset.json
-        this.load.image('base_tile', '1.png'); 
-        // مفتاح الخريطة: 'map', اسم ملف الخريطة: 'map.json'
-        this.load.tilemapTiledJSON('map', 'map.json'); 
-    }
+{
+    this.load.image('base_tile', '1.png'); // تأكد من أن اسم الملف هو 1.png بالضبط
+    this.load.tilemapTiledJSON('map', 'map.json'); // تأكد من أن ملفك اسمه map.json
+}
 
    function create ()
     {
@@ -54,4 +52,5 @@
 </body>
 
 </html>
+
 
