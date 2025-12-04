@@ -28,26 +28,25 @@
 
     var game = new Phaser.Game(config);
 
-    function preload ()
+   function preload ()
     {
-        // يجب وضع ملفات 1.png و map.json و singletileset.json في مجلد 'assets'
-        this.load.image('base_tile', '1.png');
+        // يجب أن يتطابق 'base_tile' مع اسم الصورة المستخدمة في ملف singletileset.json
+        this.load.image('base_tile', '1.png'); 
+        // مفتاح الخريطة: 'map', اسم ملف الخريطة: 'map.json'
         this.load.tilemapTiledJSON('map', 'map.json'); 
     }
 
-    function create ()
+   function create ()
     {
-        // 1. تحميل ملف الخريطة (Map JSON)
         const map = this.make.tilemap({ key: 'map' });
-
-        // 2. ربط مجموعة البلاطات (Tileset)
-        // يجب أن يتطابق 'base_tile' مع اسم الصورة المستخدم في ملف singletileset.json
-        const tileset = map.addTilesetImage('base_tile', 'base_tile');
-
-        // 3. إنشاء طبقة البلاطات وعرضها
+        
+        // يجب أن يتطابق الاسم الأول ('base_tile') مع ما تم تحميله في preload
+        // ويجب أن يتطابق الاسم الثاني ('base_tile') مع اسم الصورة (بدون الامتداد) داخل ملف singletileset.json
+        const tileset = map.addTilesetImage('1', 'base_tile'); 
+        
+        // يجب أن يتطابق 'ShapeLayer' مع اسم الطبقة في ملف map.json
         const layer = map.createLayer('ShapeLayer', tileset, 0, 0);
 
-        // تصغير حجم الكاميرا لعرض أفضل
         this.cameras.main.setZoom(2);
     }
 </script>
@@ -55,3 +54,4 @@
 </body>
 
 </html>
+
