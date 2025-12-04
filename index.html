@@ -38,9 +38,9 @@
     {
         const map = this.make.tilemap({ key: 'map' });
         
-        // يجب أن يتطابق الاسم الأول ('base_tile') مع ما تم تحميله في preload
-        // ويجب أن يتطابق الاسم الثاني ('base_tile') مع اسم الصورة (بدون الامتداد) داخل ملف singletileset.json
-        const tileset = map.addTilesetImage('1', 'base_tile'); 
+        // الاسم الأول ('1') يجب أن يتطابق مع '1' من '1.png' في ملف singletileset.json
+        // الاسم الثاني ('base_tile') يجب أن يتطابق مع الاسم الذي حملت به الصورة في preload
+        const tileset = map.addTilesetImage('1', 'base_tile');
         
         // يجب أن يتطابق 'ShapeLayer' مع اسم الطبقة في ملف map.json
         const layer = map.createLayer('ShapeLayer', tileset, 0, 0);
@@ -52,5 +52,6 @@
 </body>
 
 </html>
+
 
 
