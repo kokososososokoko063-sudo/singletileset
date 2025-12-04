@@ -4,17 +4,16 @@
     <title>JSON Tile Composition</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <style>
-        body { margin: 0; background-color: #333; }
-        canvas { display: block; margin: 20px auto; border: 1px solid #fff; }
+        body { margin: 0; background-color: #000; } /* الخلفية السوداء التي تظهر لديك */
+        canvas { display: block; margin: 20px auto; }
     </style>
 </head>
 <body>
 
 <script>
-    // تهيئة إعدادات Phaser
     var config = {
         type: Phaser.AUTO,
-        width: 64, // حجم منطقة العرض
+        width: 64, // حجم منطقة اللعبة
         height: 64,
         scale: {
             mode: Phaser.Scale.FIT,
@@ -28,31 +27,32 @@
 
     var game = new Phaser.Game(config);
 
-   function preload ()
-{
-    this.load.image('base_tile', '1.png'); // تأكد من أن اسم الملف هو 1.png بالضبط
-    this.load.tilemapTiledJSON('map', 'map.json'); // تأكد من أن ملفك اسمه map.json
-}
-
-   function create ()
+    function preload ()
     {
+        // 1. تحميل الصورة: key هو 'base_tile' والملف هو '1.png'
+        this.load.image('base_tile', '1.png'); 
+        
+        // 2. تحميل ملف الخريطة: key هو 'map', والملف هو 'map.json'
+        this.load.tilemapTiledJSON('map', 'map.json'); 
+    }
+
+    function create ()
+    {
+        // 1. إنشاء الخريطة باستخدام key التحميل ('map')
         const map = this.make.tilemap({ key: 'map' });
-        
-        // الاسم الأول ('1') يجب أن يتطابق مع '1' من '1.png' في ملف singletileset.json
-        // الاسم الثاني ('base_tile') يجب أن يتطابق مع الاسم الذي حملت به الصورة في preload
-        const tileset = map.addTilesetImage('1', 'base_tile');
-        
-        // يجب أن يتطابق 'ShapeLayer' مع اسم الطبقة في ملف map.json
+
+        // 2. ربط مجموعة البلاطات (الأهم)
+        // الاسم الأول ('1') يجب أن يكون اسم ملف الصورة *بدون* امتداد PNG كما هو في singletileset.json
+        // الاسم الثاني ('base_tile') يجب أن يكون key الصورة الذي استخدمته في preload
+        const tileset = map.addTilesetImage('1', 'base_tile'); 
+
+        // 3. إنشاء الطبقة باستخدام اسم الطبقة ('ShapeLayer') من map.json
         const layer = map.createLayer('ShapeLayer', tileset, 0, 0);
 
-        this.cameras.main.setZoom(2);
+        // تكبير للعرض
+        this.cameras.main.setZoom(4);
     }
 </script>
 
 </body>
-
 </html>
-
-
-
-

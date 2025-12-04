@@ -2,7 +2,7 @@
   "name": "SingleTileSet",
   "tilewidth": 16,
   "tileheight": 16,
-  "image": "1.png", 
+  "image": "1.png",         
   "imageheight": 16,
   "imagewidth": 16,
   "margin": 0,
@@ -13,5 +13,3 @@
   "type": "tileset",
   "version": "1.8"
 }
-
-

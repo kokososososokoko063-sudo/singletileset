@@ -14,17 +14,14 @@
   "layers": [
     {
       "id": 1,
-      "name": "ShapeLayer",
+      "name": "ShapeLayer", 
       "type": "tilelayer",
       "width": 2,
       "height": 2,
       "data": [
-        24577, 
-        12289, 
-        1,     
-        32769  
+        24577, 12289, 
+        1, 32769
       ]
     }
   ]
 }
-
