@@ -2,25 +2,14 @@
   "name": "SingleTileSet",
   "tilewidth": 16,
   "tileheight": 16,
-  "image": "1.png",
+  "image": "1.png", // تأكد أن هذا هو اسم ملف الصورة 1.png
   "imageheight": 16,
   "imagewidth": 16,
   "margin": 0,
   "spacing": 0,
   "tilecount": 1,
   "columns": 1,
-  "tiles": [
-    {
-      "id": 0,
-      "properties": [
-        {
-          "name": "base_tile",
-          "type": "bool",
-          "value": true
-        }
-      ]
-    }
-  ],
+  "tiles": [],
   "type": "tileset",
   "version": "1.8"
 }
