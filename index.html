@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Tile Composition</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <style>
+        body { margin: 0; background-color: #333; }
+        canvas { display: block; margin: 20px auto; border: 1px solid #fff; }
+    </style>
+</head>
+<body>
+
+<script>
+    // تهيئة إعدادات Phaser
+    var config = {
+        type: Phaser.AUTO,
+        width: 64, // حجم منطقة العرض
+        height: 64,
+        scale: {
+            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_BOTH
+        },
+        scene: {
+            preload: preload,
+            create: create
+        }
+    };
+
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+        // يجب وضع ملفات 1.png و map.json و singletileset.json في مجلد 'assets'
+        this.load.image('base_tile', '1.png');
+        this.load.tilemapTiledJSON('map', 'map.json'); 
+    }
+
+    function create ()
+    {
+        // 1. تحميل ملف الخريطة (Map JSON)
+        const map = this.make.tilemap({ key: 'map' });
+
+        // 2. ربط مجموعة البلاطات (Tileset)
+        // يجب أن يتطابق 'base_tile' مع اسم الصورة المستخدم في ملف singletileset.json
+        const tileset = map.addTilesetImage('base_tile', 'base_tile');
+
+        // 3. إنشاء طبقة البلاطات وعرضها
+        const layer = map.createLayer('ShapeLayer', tileset, 0, 0);
+
+        // تصغير حجم الكاميرا لعرض أفضل
+        this.cameras.main.setZoom(2);
+    }
+</script>
+
+</body>
+</html>
